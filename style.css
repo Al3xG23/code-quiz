@@ -1,0 +1,43 @@
+
+
+.nav {
+    background-color: rgb(10, 112, 78);
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/*Link Styling*/
+a:link {
+    color: black;
+    font-size: 35px;
+    text-decoration: none;
+}
+a:visited {
+    color:white;
+}
+a:hover {
+    color: white;
+}
+a:active {
+    color: red;
+}
+
+#question {
+    color: white;
+    text-align: center;
+}
+
+/*Button stylling*/
+button {
+    display:block;    
+    background-color: yellowgreen;
+    border: none;
+    padding: 15px;
+    text-align: left;
+    color: black;
+    font-size: 25px;
+    border-radius: 15px;
+    width: 500px;
+    margin: 10px;
+
+}
