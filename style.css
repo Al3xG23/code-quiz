@@ -37,11 +37,11 @@ a:active {
 
 /*Button styling*/
 button {
-    display:block;    
+    display: flex;
+    justify-content: center;    
     background-color: yellowgreen;
     border: none;
-    padding: 15px;
-    text-align: left;
+    padding: 15px;    
     color: black;
     font-size: 25px;
     border-radius: 15px;

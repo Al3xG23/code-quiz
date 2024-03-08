@@ -5,31 +5,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Coding Quiz</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <div class="nav">
-    <a href="highscores">See Highscores</a>
-    <h1 class="timer" style="text-align:center;">Time:</h1>
+    <a href="highscores.html">See Highscores</a>
+    <h1 class="timer" style="text-align:center">Time:</h1>
   </div>
   <div class="min-vh-100 d-flex justify-content-center align-items-center bg-dark">
-    <section class="w-100 row justify-content-center">
-      <div class="col-10 col-md-6 col-lg-5">
-        
-        <h2 id="title">Coding Quiz</h2>
-        <button id="start">Click to Start</button>
-        <!-- <button onclick="startQuiz()" id="start">Click to Start</button> -->
-        <div id="quiz">
-          <div id="questions">Question</div>
-          <div id="answers"></div>
-          <button id="submit">Get Results</button>
-          <div id="score"></div>
-        </div>
-        
+
+    <div class="col-10 col-md-6 col-lg-5">
+
+      <h2 id="title">Coding Quiz</h2>
+      <div class="d-flex justify-content-center"><button id="start" onclick="setTime(), changeLabel()">Click to
+          Start</button></div>
+      <div id="quiz">
+        <div id="questions" class="d-flex justify-content-center">Question</div>
+        <div id="answers"></div>
+        <div class="d-flex justify-content-center"><button id="submit">Get Results</button></div>
+        <div id="score" style="text-align:center"></div>
+        <button id="restart-button">Restart Quiz</button>
       </div>
-    </section>
+
+
+    </div>
+
   </div>
   <script src="script.js"></script>
 </body>

@@ -1,11 +1,5 @@
 var timerEl = document.querySelector(".timer");
-var secondsLeft = 60;
-var quizContainer = document.getElementById('quiz');
-var scoreContainer = document.getElementById('score');
-var submitButton = document.getElementById('submit');
-var userAnswer = '';
-var answerContainer = quizContainer.querySelectorAll('.answers');
-var score = 0;
+var secondsLeft = 60; ``
 
 function setTime() {
   // Sets interval in variable
@@ -27,11 +21,9 @@ function sendMessage() {
   timerEl.textContent = "Times's Up!";
 }
 
-setTime();
+// Questions array
 
-// questions array
-
-var myQuestions = [
+const myQuestions = [
   {
     question: "What is HTML used for in coding?",
     answers: [
@@ -40,7 +32,7 @@ var myQuestions = [
       "host a website",
       "all of the above"
     ],
-    rightAnswer: "a"
+    rightAnswer: "create the structure of a website"
   },
   {
     question: "How do you update your local repository?",
@@ -50,27 +42,7 @@ var myQuestions = [
       "git pull origin main",
       "git status"
     ],
-    rightAnswer: "c"
-  },
-  {
-    question: "Who inveed javaScript?",
-    answers: [
-      "Brendan Eich",
-      "Elon Musk",
-      "Mark Zuckerberg",
-      "Steve Jobs"
-    ],
-    rightAnswer: "a"
-  },
-  {
-    question: "What are the ways to style a site using CSS?",
-    answers: [
-      "Inline CSS and Outline CSS",
-      "Internal CSS, Inline CSS, and External CSS",
-      "Margin CSS, Internal CSS, and Outline CSS",
-      "None of the above"
-    ],
-    rightAnswer: "b"
+    rightAnswer: "git pull origin main"
   },
   {
     question: "What does API stand for?",
@@ -80,67 +52,17 @@ var myQuestions = [
       "Assorted Progamming Ideas",
       "Accurate Programming Intel"
     ],
-    rightAnswer: "b"
-  },
-  {
-    question: "What company first developed Bootstrap?",
-    answers: [
-      "Apple",
-      "Microsoft",
-      "Dell",
-      "Facebook"
-    ],
-    rightAnswer: "d"
-  },
-  {
-    question: "Where does padding add space?",
-    answers: [
-      "around the content inside an element",
-      "outside of the element",
-      "inside the head",
-      "inside the footer"
-    ],
-    rightAnswer: "a"
-  },
-  {
-    question: "Where does margin add space?",
-    answers: [
-      "around the content inside an element",
-      "inside the footer",
-      "outside of the element",
-      "inside the head"
-    ],
-    rightAnswer: "c"
+    rightAnswer: "Application Programming Interfaces"
   },
   {
     question: "When should JavaScript be added in HTML?",
     answers: [
       "at the end of the element using the script",
-      "in the beginning of teh element using the script",
+      "in the beginning of the element using the script",
       "towards the end of the HTML, just before the closing tag",
       "toards the beginning of the HTML, just after the opening tag"
     ],
-    rightAnswer: "c"
-  },
-  {
-    question: "What is a wireframe?",
-    answers: [
-      "blueprintfor your javascript",
-      "code for your webpage",
-      "blueprint for your code",
-      "schematic for your webpage"
-    ],
-    rightAnswer: "d"
-  },
-  {
-    question: "What is pseudocode?",
-    answers: [
-      "notes on your code",
-      "code that is only read once",
-      "groupings of code",
-      "practice code"
-    ],
-    rightAnswer: "a"
+    rightAnswer: "towards the end of the HTML, just before the closing tag"
   },
   {
     question: "What does MVP stand for?",
@@ -150,7 +72,7 @@ var myQuestions = [
       "most viable project",
       "minimum viable project"
     ],
-    rightAnswer: "d"
+    rightAnswer: "minimum viable project"
   },
 ];
 
@@ -158,8 +80,12 @@ var myQuestions = [
 
 var startButton = document.getElementById("start");
 startButton.addEventListener("click", startQuiz);
-
 var questionIndex = 0;
+
+function changeLabel() {
+  const startButton = document.getElementById("start");
+  startButton.remove();
+}
 
 function startQuiz() {
   var currentQuestion = myQuestions[questionIndex]
@@ -170,24 +96,43 @@ function startQuiz() {
     document.getElementById("answers").append(choiceButton);
     choiceButton.addEventListener("click", checkAnswer);
   }
+  return;
 }
-function checkAnswer(userAnswer) {
-  // console.log("testing:");
-  // for (var i = 0; i < myQuestions.length; i++) {
-  //   userAnswer = (answerContainer[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
 
-    // document.getElementById("answers").innerHTML = "";
-    if (userAnswer === myQuestions.rigthAnswer) {
-      score = score + 1;
-    } else {
-      if (userAnswer != myQuestions.rigthAnswer) {
-        secondsLeft = -5;
-      }
-    }
- 
+// Checking answers and scoring
+let score = 0;
+
+function checkAnswer(event) {
+  let userChoice = event.target.textContent;
+  let correctAnswer = myQuestions[questionIndex].rightAnswer;
+
+  if (userChoice === correctAnswer) {
+    score++;
+  } else {
+    secondsLeft -= 10;
+  } if (secondsLeft <= 0) {
+    sendMessage();
+    secondsLeft = null;
+  }
   questionIndex++;
-
+  
+  localStorage.setItem("endScore", score);
+  console.log(score + " inside checkAnwser");
   startQuiz();
 }
 
-console.log(userAnswer.innerHTML)
+
+function showScore(score) {
+  localStorage.getItem("endscore");
+  document.getElementById("score").append(score);
+};
+showScore();
+
+let restartButton = document.getElementById("restart-button");
+restartButton.addEventListener("click", restartQuiz);
+function restartQuiz() {
+  location.assign('index.html');
+};
+
+
+// console.log(choiceButton.innerHTML)
