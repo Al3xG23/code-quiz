@@ -34,12 +34,13 @@ THEN I can save my initials and my score
 
 ## Screenshots
 
-![alt text](Capture.PNG)!
-[alt text](Capture2.PNG)
+![alt text](Capture.PNG)
+![alt text](Capture2.PNG)
 
 ## Links
 
 https://al3xg23.github.io/code-quiz/
+
 https://github.com/Al3xG23/code-quiz
 
 ## License
